@@ -2,3 +2,4 @@ dist
 node_modules
 .env
 dump.rdb
+.DS_Store
