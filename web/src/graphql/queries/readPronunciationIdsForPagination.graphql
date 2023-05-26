@@ -1,0 +1,13 @@
+query ReadPronunciationIdsForPagination(
+  $options: ReadPronunciationIdsForPaginationInput!
+) {
+  readPronunciationIdsForPagination(options: $options) {
+    id
+    by
+    oldest
+    newest
+    error {
+      message
+    }
+  }
+}

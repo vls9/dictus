@@ -1,0 +1,10 @@
+mutation CreateOnePronunciation($options: CreateOnePronunciationInput!) {
+  createOnePronunciation(options: $options) {
+    errors {
+      ...RegularFieldError
+    }
+    pronunciation {
+      ...RegularPronunciation
+    }
+  }
+}

@@ -1,0 +1,16 @@
+fragment RegularMeaning on Meaning {
+  id
+  definition
+  usage
+  imageLink
+  notes
+  userId
+  entries {
+    id
+    headword
+    createdAt
+    updatedAt
+  }
+  createdAt
+  updatedAt
+}

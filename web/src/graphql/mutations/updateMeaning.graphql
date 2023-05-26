@@ -1,0 +1,17 @@
+mutation UpdateMeaning($options: UpdateMeaningInput!) {
+  updateMeaning(options: $options) {
+    errors {
+      ...RegularFieldError
+    }
+    meaning {
+      id
+      definition
+      usage
+      imageLink
+      notes
+      userId
+      createdAt
+      updatedAt
+    }
+  }
+}

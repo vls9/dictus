@@ -1,0 +1,24 @@
+fragment RegularEntry on Entry {
+  id
+  headword
+  meanings {
+    id
+    definition
+    usage
+    imageLink
+    notes
+    userId
+    createdAt
+    updatedAt
+  }
+  pronunciations {
+    id
+    transcription
+    notes
+    userId
+    createdAt
+    updatedAt
+  }
+  createdAt
+  updatedAt
+}

@@ -1,0 +1,10 @@
+mutation CreateManyPronunciations($options: CreateManyPronunciationsInput!) {
+  createManyPronunciations(options: $options) {
+    pronunciations {
+      ...RegularPronunciation
+    }
+    error {
+      ...RegularFieldError
+    }
+  }
+}

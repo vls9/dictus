@@ -1,0 +1,8 @@
+mutation CreateMeaningLink($options: CreateMeaningLinkInput!) {
+  createMeaningLink(options: $options) {
+    entryId
+    errors {
+      ...RegularFieldError
+    }
+  }
+}

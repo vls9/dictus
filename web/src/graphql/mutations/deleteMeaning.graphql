@@ -1,0 +1,8 @@
+mutation DeleteMeaning($id: Int!) {
+  deleteMeaning(id: $id) {
+    isDeletionComplete
+    error {
+      message
+    }
+  }
+}

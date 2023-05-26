@@ -1,0 +1,8 @@
+mutation DeletePronunciation($id: Int!) {
+  deletePronunciation(id: $id) {
+    isDeletionComplete
+    error {
+      message
+    }
+  }
+}

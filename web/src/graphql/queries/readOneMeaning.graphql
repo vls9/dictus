@@ -1,0 +1,11 @@
+query ReadOneMeaning($options: ReadOneMeaningInput!) {
+  readOneMeaning(options: $options) {
+    id
+    meaning {
+      ...RegularMeaning
+    }
+    error {
+      message
+    }
+  }
+}

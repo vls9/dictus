@@ -1,0 +1,16 @@
+mutation UpdatePronunciation($options: UpdatePronunciationInput!) {
+  updatePronunciation(options: $options) {
+    errors {
+      ...RegularFieldError
+    }
+    pronunciation {
+      id
+      transcription
+      notes
+      userId
+      entryId
+      createdAt
+      updatedAt
+    }
+  }
+}

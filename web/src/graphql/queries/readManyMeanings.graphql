@@ -1,0 +1,10 @@
+query ReadManyMeanings($options: ReadManyMeaningsInput!) {
+  readManyMeanings(options: $options) {
+    meanings {
+      ...RegularMeaning
+    }
+    error {
+      message
+    }
+  }
+}

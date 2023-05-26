@@ -1,0 +1,11 @@
+query ReadOnePronunciation($options: ReadOnePronunciationInput!) {
+  readOnePronunciation(options: $options) {
+    id
+    pronunciation {
+      ...RegularPronunciation
+    }
+    error {
+      message
+    }
+  }
+}

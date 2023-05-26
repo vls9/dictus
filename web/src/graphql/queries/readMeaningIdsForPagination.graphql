@@ -1,0 +1,11 @@
+query ReadMeaningIdsForPagination($options: ReadMeaningIdsForPaginationInput!) {
+  readMeaningIdsForPagination(options: $options) {
+    id
+    by
+    oldest
+    newest
+    error {
+      message
+    }
+  }
+}

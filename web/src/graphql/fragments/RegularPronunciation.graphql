@@ -1,0 +1,15 @@
+fragment RegularPronunciation on Pronunciation {
+  id
+  transcription
+  notes
+  userId
+  entryId
+  entry {
+    id
+    headword
+    createdAt
+    updatedAt
+  }
+  createdAt
+  updatedAt
+}

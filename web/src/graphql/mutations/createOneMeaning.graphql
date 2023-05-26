@@ -1,0 +1,10 @@
+mutation CreateOneMeaning($options: CreateOneMeaningInput!) {
+  createOneMeaning(options: $options) {
+    errors {
+      ...RegularFieldError
+    }
+    meaning {
+      ...RegularMeaning
+    }
+  }
+}

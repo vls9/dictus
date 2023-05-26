@@ -1,0 +1,8 @@
+mutation DeleteMeaningLink($options: DeleteMeaningLinkInput!) {
+  deleteMeaningLink(options: $options) {
+    isDeletionSuccessful
+    error {
+      message
+    }
+  }
+}

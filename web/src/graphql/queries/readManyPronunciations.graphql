@@ -1,0 +1,10 @@
+query ReadManyPronunciations($options: ReadManyPronunciationsInput!) {
+  readManyPronunciations(options: $options) {
+    pronunciations {
+      ...RegularPronunciation
+    }
+    error {
+      message
+    }
+  }
+}

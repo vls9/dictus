@@ -1,0 +1,10 @@
+mutation CreateManyMeanings($options: CreateManyMeaningsInput!) {
+  createManyMeanings(options: $options) {
+    meanings {
+      ...RegularMeaning
+    }
+    error {
+      ...RegularFieldError
+    }
+  }
+}
