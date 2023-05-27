@@ -8,8 +8,7 @@ import {
   Resolver,
 } from "type-graphql";
 import { User } from "../../entities/User.js";
-import { MyContext } from "../../types.js";
-import { FieldError } from "../../utils/errorTypes.js";
+import { FieldError, MyContext } from "../../types.js";
 import { validateRegister } from "../../utils/validateRegister.js";
 import argon2 from "argon2";
 

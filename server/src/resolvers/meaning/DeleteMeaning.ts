@@ -10,8 +10,7 @@ import {
 } from "type-graphql";
 import { Meaning } from "../../entities/Meaning.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
-import { NoFieldError } from "../../utils/errorTypes.js";
+import { MyContext, NoFieldError } from "../../types.js";
 
 @ObjectType()
 class DeleteMeaningResponse {

@@ -11,7 +11,7 @@ import {
 import { AppDataSource } from "../../data-source.js";
 import { Entry } from "../../entities/Entry.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { FieldError } from "../../utils/errorTypes.js";
+import { FieldError } from "../../types.js";
 
 @InputType()
 class CreateMeaningLinkInput {

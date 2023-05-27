@@ -10,8 +10,7 @@ import {
 } from "type-graphql";
 import { Pronunciation } from "../../entities/Pronunciation.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
-import { NoFieldError } from "../../utils/errorTypes.js";
+import { MyContext, NoFieldError } from "../../types.js";
 
 @ObjectType()
 class DeletePronunciationResponse {

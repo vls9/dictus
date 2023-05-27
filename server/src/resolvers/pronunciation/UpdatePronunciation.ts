@@ -3,8 +3,7 @@ import { AppDataSource } from "../../data-source.js";
 import { Entry } from "../../entities/Entry.js";
 import { Pronunciation } from "../../entities/Pronunciation.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
-import { FieldError } from "../../utils/errorTypes.js";
+import { FieldError, MyContext } from "../../types.js";
 
 @InputType()
 export class UpdatedEntryPronunciation {

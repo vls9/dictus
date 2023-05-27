@@ -9,7 +9,7 @@ import {
   UseMiddleware,
 } from "type-graphql";
 import { AppDataSource } from "../../data-source.js";
-import { NoFieldError } from "../../utils/errorTypes.js";
+import { NoFieldError } from "../../types.js";
 
 @InputType()
 class DeleteMeaningLinkInput {

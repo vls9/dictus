@@ -12,9 +12,8 @@ import { AppDataSource } from "../../data-source.js";
 import { Entry } from "../../entities/Entry.js";
 import { Meaning } from "../../entities/Meaning.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
+import { FieldError, MyContext } from "../../types.js";
 import { checkImageLink } from "../../utils/checkImageLink.js";
-import { FieldError } from "../../utils/errorTypes.js";
 
 @InputType()
 export class UpdatedEntryMeaning {

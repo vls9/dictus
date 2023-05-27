@@ -10,9 +10,8 @@ import {
 } from "type-graphql";
 import { Pronunciation } from "../../entities/Pronunciation.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
+import { FieldError, MyContext } from "../../types.js";
 import { createOneEntry } from "../../utils/createOneEntry.js";
-import { FieldError } from "../../utils/errorTypes.js";
 import { generateErrors } from "../../utils/generateErrors.js";
 
 @InputType()

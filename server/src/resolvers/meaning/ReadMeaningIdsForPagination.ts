@@ -12,8 +12,7 @@ import {
 import { AppDataSource } from "../../data-source.js";
 import { Meaning } from "../../entities/Meaning.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
-import { NoFieldError } from "../../utils/errorTypes.js";
+import { MyContext, NoFieldError } from "../../types.js";
 
 @InputType()
 class ReadMeaningIdsForPaginationInput {

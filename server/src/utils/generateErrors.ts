@@ -1,4 +1,4 @@
-import { FieldError } from "./errorTypes.js";
+import { FieldError } from "../types.js";
 
 export const generateErrors = (fields: string[], message: string) => {
   let errors: FieldError[] = [];

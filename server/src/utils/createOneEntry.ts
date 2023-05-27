@@ -1,6 +1,6 @@
 import { AppDataSource } from "../data-source.js";
 import { Entry } from "../entities/Entry.js";
-import { NoFieldError } from "./errorTypes.js";
+import { NoFieldError } from "../types.js";
 
 export type EntryInput = {
   headword: string;

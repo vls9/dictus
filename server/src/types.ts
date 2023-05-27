@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import "express-session";
 import { Redis } from "ioredis";
+import { ObjectType, Field } from "type-graphql";
 
 export type MyContext = {
   req: Request;
@@ -13,4 +14,19 @@ declare module "express-session" {
   interface SessionData {
     userId: number;
   }
+}
+
+@ObjectType()
+export class FieldError {
+  @Field()
+  field!: string;
+
+  @Field()
+  message!: string;
+}
+
+@ObjectType()
+export class NoFieldError {
+  @Field()
+  message!: string;
 }

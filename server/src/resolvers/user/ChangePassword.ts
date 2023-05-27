@@ -2,8 +2,7 @@ import argon2 from "argon2";
 import { Arg, Ctx, Field, InputType, Mutation, ObjectType } from "type-graphql";
 import { FORGOT_PASSWORD_PREFIX } from "../../constants.js";
 import { User } from "../../entities/User.js";
-import { MyContext } from "../../types.js";
-import { FieldError } from "../../utils/errorTypes.js";
+import { FieldError, MyContext } from "../../types.js";
 
 @InputType()
 class ChangePasswordInput {

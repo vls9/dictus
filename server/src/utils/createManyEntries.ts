@@ -1,7 +1,7 @@
 import { EntityManager } from "typeorm";
 import { Entry } from "../entities/Entry.js";
+import { NoFieldError } from "../types.js";
 import { EntryInput } from "./createOneEntry.js";
-import { NoFieldError } from "./errorTypes.js";
 
 type CreateManyEntriesResponse = {
   entries?: Entry[];

@@ -3,8 +3,8 @@ import {
   INPUT_FIELD_ELEMENT_SEPARATOR,
   INPUT_FIELD_SEPARATOR,
 } from "../constants.js";
+import { NoFieldError } from "../types.js";
 import { EntryInput } from "./createOneEntry.js";
-import { NoFieldError } from "./errorTypes.js";
 
 class MeaningInput {
   definition!: string;

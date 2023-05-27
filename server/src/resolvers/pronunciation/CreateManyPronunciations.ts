@@ -11,8 +11,7 @@ import {
 import { AppDataSource } from "../../data-source.js";
 import { Pronunciation } from "../../entities/Pronunciation.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
-import { FieldError } from "../../utils/errorTypes.js";
+import { FieldError, MyContext } from "../../types.js";
 import { createManyEntries } from "../../utils/createManyEntries.js";
 import { processCreateManyPronunciationsInput } from "../../utils/processCreateManyPronunciationsInput.js";
 

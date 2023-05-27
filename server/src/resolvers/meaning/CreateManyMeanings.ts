@@ -11,9 +11,8 @@ import {
 import { AppDataSource } from "../../data-source.js";
 import { Meaning } from "../../entities/Meaning.js";
 import { isAuth } from "../../middleware/isAuth.js";
-import { MyContext } from "../../types.js";
+import { FieldError, MyContext } from "../../types.js";
 import { checkImageLink } from "../../utils/checkImageLink.js";
-import { FieldError } from "../../utils/errorTypes.js";
 import { createManyEntries } from "../../utils/createManyEntries.js";
 import { processCreateManyMeaningsInput } from "../../utils/processCreateManyMeaningsInput.js";
 
