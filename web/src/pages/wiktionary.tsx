@@ -29,7 +29,6 @@ export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
   useEffect(() => {
     fetchKaikki(query)
       .then((res) => {
-        console.log("res:", res); // Set state
         const parsed = parseKaikki(res);
         if (parsed.error) {
           setAlertMessage(parsed.error.message);

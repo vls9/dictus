@@ -27,9 +27,6 @@ export const fetchKaikki = async (
     0,
     1
   )}/${converted.slice(0, Math.min(2, converted.length))}/${converted}.json`;
-  console.log("url:", url);
-  // Check quries with spaces
-
   // Fetch response
   try {
     const { data, status } = await axios.get<string | WordEntry>(url, {
@@ -37,8 +34,6 @@ export const fetchKaikki = async (
         Accept: "application/json",
       },
     });
-    console.log("Response status", status);
-    console.log("Data", data);
     // Response is either a JSON or a string containing JSONs
     const parsedData =
       typeof data === "string"
