@@ -1,5 +1,4 @@
 import { Box, Button, Flex, Heading, VStack, Text } from "@chakra-ui/react";
-import axios from "axios";
 import { Form, Formik } from "formik";
 import { withUrqlClient } from "next-urql";
 import { useEffect, useState } from "react";
@@ -10,78 +9,40 @@ import { WiktionaryMeaningsTable } from "../components/meaning/WiktionaryMeaning
 import { WiktionaryPronunciationsTable } from "../components/pronunciation/WiktionaryPronunciationsTable";
 import { useMeQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
-import { parseWiktionaryMeanings } from "../utils/parseWiktionaryMeanings";
-import { parseWiktionaryPronunciations } from "../utils/parseWiktionaryPronunciations";
+import { fetchKaikki } from "../utils/fetch-kaikki/fetchKaikki";
+import { parseKaikki, ParseKaikkiResponse } from "../utils/parseKaikki";
 
 interface WiktionaryProps {}
-
-export type NewPronunciation = {
-  headword: string;
-  transcription: string;
-  notes: string;
-};
-
-export type NewMeaning = {
-  headword: string;
-  definition: string;
-  usage: string;
-  imageLink: string;
-  notes: string;
-};
 
 export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
   // Load current user
   const [isServer, setIsServer] = useState(true);
   useEffect(() => setIsServer(false), []);
-  const [{ data, fetching }] = useMeQuery({
+  const [{ data: meData, fetching: meFetching }] = useMeQuery({
     pause: isServer, // Do not run on the server
   });
 
   const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [pronData, setPronData] = useState<NewPronunciation[] | null>(null);
-  // const [meanData, setMeanData] = useState<NewMeaning[] | null>(null);
   const [alertMessage, setAlertMessage] = useState("");
-  useEffect(() => {
-    if (query) {
-      const url = `https://en.wiktionary.org/w/api.php?format=json&action=query&titles=${query}&prop=revisions&rvprop=content&rvslots=*&redirects=1&origin=*&callback=?`;
+  const [data, setData] = useState<ParseKaikkiResponse["data"]>();
 
-      axios
-        .get(url)
-        .then((response) => {
-          try {
-            // Parse page, page title and content
-            const rawDataJson = JSON.parse(
-              response.data.slice(5, response.data.length - 1)
-            );
-            const pages = rawDataJson.query.pages;
-            const pageId = Object.keys(pages)[0];
-            const page = pages[pageId];
-            const title = page.title;
-            const pageContent = page.revisions[0].slots.main["*"];
-            const parsedProns = parseWiktionaryPronunciations(
-              pageContent,
-              title
-            );
-            // const parsedMeanings = parseWiktionaryMeanings(pageContent, title);
-            setPronData(parsedProns);
-            // setMeanData(parsedMeanings);
-          } catch (err) {
-            console.error(err);
-            setAlertMessage("No search results");
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-          setAlertMessage(err);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
+  useEffect(() => {
+    fetchKaikki(query)
+      .then((res) => {
+        console.log("res:", res); // Set state
+        const parsed = parseKaikki(res);
+        if (parsed.error) {
+          setAlertMessage(parsed.error.message);
+        } else {
+          setData(parsed.data);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, [query]);
 
-  if (fetching) {
+  if (meFetching) {
     return (
       <Layout>
         <Flex>
@@ -91,7 +52,7 @@ export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
     );
   }
 
-  if (!fetching && !data?.me) {
+  if (!meFetching && !meData?.me) {
     // User not logged in
     return (
       <Layout>
@@ -103,14 +64,14 @@ export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
   }
 
   return (
-    <Layout user={data?.me}>
+    <Layout user={meData?.me}>
       <Flex alignItems="center" justifyContent="center">
         <VStack>
           <Box>
             <Formik
               initialValues={{ query: "" }}
               onSubmit={(values, { setSubmitting }) => {
-                setAlertMessage("")
+                setAlertMessage("");
                 setQuery(values.query);
                 setSubmitting(false);
               }}
@@ -141,20 +102,14 @@ export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
           <Box>{alertMessage && <ErrorAlert message={alertMessage} />}</Box>
         </VStack>
       </Flex>
-      {!query ? (
-        <>
-          <Box>No data</Box>
-        </>
-      ) : (
+      {!query ? null : (
         <>
           <Flex mb={8}>
-            {!loading && !pronData ? (
-              <>
-                <Box>Pronunciation(s) not found</Box>
-              </>
+            {data?.pronunciationInputs?.length === 0 ? (
+              <Box>Pronunciation(s) not found</Box>
             ) : (
               <>
-                {!pronData ? null : (
+                {!data?.pronunciationInputs ? null : (
                   <VStack>
                     <Flex mt={2} mb={4} alignItems="left">
                       <Box>
@@ -164,7 +119,9 @@ export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
                       </Box>
                     </Flex>
                     <Flex>
-                      <WiktionaryPronunciationsTable data={pronData} />
+                      <WiktionaryPronunciationsTable
+                        data={data.pronunciationInputs}
+                      />
                     </Flex>
                   </VStack>
                 )}
@@ -172,28 +129,26 @@ export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
             )}
           </Flex>
           <Flex mb={8}>
-            {/* {!loading && !meanData ? (
-            <>
-              <div>Meaning(s) not found</div>
-            </>
-          ) : (
-            <>
-              {!meanData ? null : (
-                <VStack>
-                  <Flex mt={2} mb={4}>
-                    <Box>
-                      <Heading as="h2" size="xl" textAlign="center">
-                        Meanings
-                      </Heading>
-                    </Box>
-                  </Flex>
-                  <Flex>
-                    <WiktionaryMeaningsTable data={meanData} />
-                  </Flex>
-                </VStack>
-              )}
-            </>
-          )} */}
+            {data?.meaningInputs?.length === 0 ? (
+              <Box>Meaning(s) not found</Box>
+            ) : (
+              <>
+                {!data?.meaningInputs ? null : (
+                  <VStack>
+                    <Flex mt={2} mb={4}>
+                      <Box>
+                        <Heading as="h2" size="xl" textAlign="center">
+                          Meanings
+                        </Heading>
+                      </Box>
+                    </Flex>
+                    <Flex>
+                      <WiktionaryMeaningsTable data={data.meaningInputs} />
+                    </Flex>
+                  </VStack>
+                )}
+              </>
+            )}
           </Flex>
         </>
       )}

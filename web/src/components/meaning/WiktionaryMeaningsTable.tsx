@@ -8,11 +8,11 @@ import {
   Td,
   Text,
 } from "@chakra-ui/react";
-import { NewMeaning } from "../../pages/wiktionary";
-import { CreateMeaningFromSearchForm } from "./CreateMeaningFromSearchForm";
+import { CreateOneMeaningInput } from "../../generated/graphql";
+import { CreateOneMeaningFromSearchForm } from "./CreateOneMeaningFromSearchForm";
 
 interface WiktionaryMeaningsTableProps {
-  data: NewMeaning[];
+  data: CreateOneMeaningInput[];
 }
 
 export const WiktionaryMeaningsTable: React.FC<
@@ -30,7 +30,7 @@ export const WiktionaryMeaningsTable: React.FC<
             <Tr>
               <Th>Definition</Th>
               <Th>Usage</Th>
-              {/* <Th>Notes</Th> */}
+              <Th>Notes</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -43,9 +43,9 @@ export const WiktionaryMeaningsTable: React.FC<
                   <Td style={{ whiteSpace: "pre-wrap" }}>
                     <Text fontStyle="italic">{meaning.usage}</Text>
                   </Td>
-                  {/* <Td>{meaning.notes}</Td> */}
+                  <Td style={{ whiteSpace: "pre-wrap" }}>{meaning.notes}</Td>
                   <Td>
-                    <CreateMeaningFromSearchForm meaning={meaning} />
+                    <CreateOneMeaningFromSearchForm meaning={meaning} />
                   </Td>
                 </Tr>
               )

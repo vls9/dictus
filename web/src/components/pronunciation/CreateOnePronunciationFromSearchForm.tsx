@@ -2,17 +2,19 @@ import { PlusSquareIcon } from "@chakra-ui/icons";
 import { IconButton, Tooltip } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { useState } from "react";
-import { useCreateOnePronunciationMutation } from "../../generated/graphql";
-import { NewPronunciation } from "../../pages/wiktionary";
+import {
+  CreateOnePronunciationInput,
+  useCreateOnePronunciationMutation,
+} from "../../generated/graphql";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { ErrorAlert } from "../ErrorAlert";
 
-interface CreatePronunciationFromSearchFormProps {
-  pronunciation: NewPronunciation;
+interface CreateOnePronunciationFromSearchFormProps {
+  pronunciation: CreateOnePronunciationInput;
 }
 
-export const CreatePronunciationFromSearchForm: React.FC<
-  CreatePronunciationFromSearchFormProps
+export const CreateOnePronunciationFromSearchForm: React.FC<
+  CreateOnePronunciationFromSearchFormProps
 > = ({ pronunciation }) => {
   const [, createOnePronunciation] = useCreateOnePronunciationMutation();
   const [alertMessage, setAlertMessage] = useState("");

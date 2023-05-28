@@ -7,11 +7,11 @@ import {
   Tbody,
   Td,
 } from "@chakra-ui/react";
-import { NewPronunciation } from "../../pages/wiktionary";
-import { CreatePronunciationFromSearchForm } from "./CreatePronunciationFromSearchForm";
+import { CreateOnePronunciationInput } from "../../generated/graphql";
+import { CreateOnePronunciationFromSearchForm } from "./CreateOnePronunciationFromSearchForm";
 
 interface WiktionaryPronunciationsTableProps {
-  data: NewPronunciation[];
+  data: CreateOnePronunciationInput[];
 }
 
 export const WiktionaryPronunciationsTable: React.FC<
@@ -39,7 +39,9 @@ export const WiktionaryPronunciationsTable: React.FC<
                   <Td>{pron.transcription}</Td>
                   <Td>{pron.notes}</Td>
                   <Td>
-                    <CreatePronunciationFromSearchForm pronunciation={pron} />
+                    <CreateOnePronunciationFromSearchForm
+                      pronunciation={pron}
+                    />
                   </Td>
                 </Tr>
               )

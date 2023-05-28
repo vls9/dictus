@@ -74,7 +74,7 @@ export type CreateOneMeaningResponse = {
 export type CreateOnePronunciationInput = {
   headword?: InputMaybe<Scalars['String']>;
   notes?: InputMaybe<Scalars['String']>;
-  trancription?: InputMaybe<Scalars['String']>;
+  transcription?: InputMaybe<Scalars['String']>;
 };
 
 export type CreateOnePronunciationResponse = {

@@ -2,17 +2,19 @@ import { PlusSquareIcon } from "@chakra-ui/icons";
 import { Tooltip, IconButton } from "@chakra-ui/react";
 import { Formik, Form } from "formik";
 import { useState } from "react";
-import { useCreateOneMeaningMutation } from "../../generated/graphql";
-import { NewMeaning } from "../../pages/wiktionary";
+import {
+  CreateOneMeaningInput,
+  useCreateOneMeaningMutation,
+} from "../../generated/graphql";
 import { toErrorMap } from "../../utils/toErrorMap";
 import { ErrorAlert } from "../ErrorAlert";
 
-interface CreateMeaningFromSearchFormProps {
-  meaning: NewMeaning;
+interface CreateOneMeaningFromSearchFormProps {
+  meaning: CreateOneMeaningInput;
 }
 
-export const CreateMeaningFromSearchForm: React.FC<
-  CreateMeaningFromSearchFormProps
+export const CreateOneMeaningFromSearchForm: React.FC<
+  CreateOneMeaningFromSearchFormProps
 > = ({ meaning }) => {
   const [, createOneMeaning] = useCreateOneMeaningMutation();
   const [alertMessage, setAlertMessage] = useState("");
