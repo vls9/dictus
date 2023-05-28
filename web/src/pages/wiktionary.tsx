@@ -27,18 +27,20 @@ export const Wiktionary: React.FC<WiktionaryProps> = ({}) => {
   const [data, setData] = useState<ParseKaikkiResponse["data"]>();
 
   useEffect(() => {
-    fetchKaikki(query)
-      .then((res) => {
-        const parsed = parseKaikki(res);
-        if (parsed.error) {
-          setAlertMessage(parsed.error.message);
-        } else {
-          setData(parsed.data);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (query) {
+      fetchKaikki(query)
+        .then((res) => {
+          const parsed = parseKaikki(res);
+          if (parsed.error) {
+            setAlertMessage(parsed.error.message);
+          } else {
+            setData(parsed.data);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }, [query]);
 
   if (meFetching) {

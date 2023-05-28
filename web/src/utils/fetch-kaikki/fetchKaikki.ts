@@ -34,6 +34,7 @@ export const fetchKaikki = async (
         Accept: "application/json",
       },
     });
+    console.log("Status:", status);
     // Response is either a JSON or a string containing JSONs
     const parsedData =
       typeof data === "string"
@@ -42,6 +43,7 @@ export const fetchKaikki = async (
             .filter(Boolean)
             .map((jsonString) => JSON.parse(jsonString))
         : [data];
+    console.log("parsed data:", parsedData);
     return {
       data: parsedData,
     };
