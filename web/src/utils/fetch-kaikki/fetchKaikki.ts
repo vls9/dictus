@@ -10,7 +10,7 @@ export const fetchKaikki = async (
   query: string,
   lang: string = "English"
 ): Promise<FetchKaikkiResponse> => {
-  // Partially based on: https://github.com/calcit-lang/calcit-runner.nim/blob/master/src/calcit_runner/codegen/emit_js.nim
+  // Partly based on: https://github.com/calcit-lang/calcit-runner.nim/blob/master/src/calcit_runner/codegen/emit_js.nim
   const converted = query
     .replaceAll(".", "_dot_")
     .replaceAll("?", "_ques_")

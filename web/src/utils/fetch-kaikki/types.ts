@@ -63,9 +63,9 @@ type Example = {
 // data (if not sense-disambiguated) or in the word sense (if sense-disambiguated)"
 type Translation = {
   alt?: string; // To check
-  code: string;
-  english: string;
-  lang: Lang;
+  code?: string;
+  english?: string;
+  lang?: Lang;
   note?: string;
   roman?: string; // Romanization
   sense?: string; // "May not match gloss exactly"
