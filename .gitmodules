@@ -1,0 +1,3 @@
+[submodule "web/src/utils/fetch-kaikki"]
+	path = web/src/utils/fetch-kaikki
+	url = https://github.com/vls9/fetch-kaikki
