@@ -29,6 +29,7 @@ import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Layout } from "../../components/Layout";
+import { EditableAudioLink } from "../../components/pronunciation/EditableAudioLink";
 import { EditableHeadwordPronunciation } from "../../components/pronunciation/EditableHeadwordPronunciation";
 import { EditableNotesPronunciation } from "../../components/pronunciation/EditableNotesPronunciation";
 import { EditableTranscription } from "../../components/pronunciation/EditableTranscription";
@@ -214,6 +215,15 @@ export const PronunciationView: React.FC<PronunciationViewProps> = ({}) => {
                     <EditableTranscription
                       id={pronunciation.id}
                       transcription={pronunciation.transcription}
+                    />
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td style={{ whiteSpace: "pre-wrap" }}>Audio</Td>
+                  <Td>
+                    <EditableAudioLink
+                      id={pronunciation.id}
+                      audioLink={pronunciation.audioLink}
                     />
                   </Td>
                 </Tr>
