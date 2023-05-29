@@ -45,12 +45,12 @@ export const parseKaikki = (res: FetchKaikkiResponse): ParseKaikkiResponse => {
           headword: wordEntry.word,
           definition: sense.raw_glosses
             ? sense.raw_glosses.join(" / ")
-            : sense.glosses?.join(" / "), // Raw glosses may not be present
+            : sense.glosses?.join(" / ") || "", // Raw glosses may not be present
           usage: sense.examples
-            ? sense.examples[sense.examples?.length - 1].text
+            ? sense.examples[sense.examples.length - 1].text
             : "", // Take the last usage
           imageLink: "",
-          notes: sense.tags?.join(", "),
+          notes: sense.tags?.join(", ") || "",
         });
       });
     }
