@@ -1,4 +1,14 @@
-import { Arg, Ctx, Field, InputType, Int, Mutation, ObjectType, Resolver, UseMiddleware } from "type-graphql";
+import {
+  Arg,
+  Ctx,
+  Field,
+  InputType,
+  Int,
+  Mutation,
+  ObjectType,
+  Resolver,
+  UseMiddleware,
+} from "type-graphql";
 import { AppDataSource } from "../../data-source.js";
 import { Entry } from "../../entities/Entry.js";
 import { Pronunciation } from "../../entities/Pronunciation.js";
@@ -12,6 +22,9 @@ export class UpdatedEntryPronunciation {
 
   @Field(() => String, { nullable: true })
   transcription?: string;
+
+  @Field(() => String, { nullable: true })
+  audioLink?: string;
 
   @Field(() => String, { nullable: true })
   notes?: string;
@@ -146,5 +159,4 @@ export class UpdatePronunciationResolver {
 
     return response;
   }
-
 }

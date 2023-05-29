@@ -15,7 +15,9 @@ Features of Dictus:
 - Add custom meanings and pronunciations
 - Add many meanings or pronunciations at once (from one field)
 - Add image links to meanings
-- Look up and add meanings pronunciations from Wiktionary (using the data from [Kaikki.org](https://kaikki.org), generated with Tatu Ylonen's [wiktextract](https://github.com/tatuylonen/wiktextract)) (in development)
+- Add audio links to pronunciations
+- Look up and add meanings and pronunciations from Wiktionary (using the data from [Kaikki.org](https://kaikki.org), generated with Tatu Ylonen's [wiktextract](https://github.com/tatuylonen/wiktextract)) (in development)
+- Add audio links from Wiktionary
 - Link headwords to meanings (many to many) and pronunciations (one to many)
 - View one record at a time
 - Download records in CSV

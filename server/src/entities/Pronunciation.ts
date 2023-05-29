@@ -25,6 +25,10 @@ export class Pronunciation extends BaseEntity {
 
   @Field()
   @Column()
+  audioLink!: string;
+
+  @Field()
+  @Column()
   notes!: string;
 
   @Field(() => Int)

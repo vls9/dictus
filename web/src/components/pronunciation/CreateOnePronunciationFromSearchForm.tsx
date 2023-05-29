@@ -25,6 +25,7 @@ export const CreateOnePronunciationFromSearchForm: React.FC<
         initialValues={{
           headword: pronunciation.headword,
           transcription: pronunciation.transcription,
+          audioLink: pronunciation.audioLink,
           notes: pronunciation.notes,
         }}
         onSubmit={async (values, { setErrors }) => {

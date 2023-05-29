@@ -21,6 +21,7 @@ export const CreateOnePronunciationForm: React.FC<
         initialValues={{
           headword: "",
           transcription: "",
+          audioLink: "",
           notes: "",
         }}
         onSubmit={async (values, { resetForm, setErrors }) => {
@@ -54,6 +55,11 @@ export const CreateOnePronunciationForm: React.FC<
                   name="transcription"
                   placeholder="Transcription"
                   label="Transcription"
+                />
+                <InputField
+                  name="audioLink"
+                  placeholder="Audio link"
+                  label="Audio link"
                 />
                 <InputField name="notes" placeholder="Notes" label="Notes" />
                 <IconButton

@@ -1,4 +1,3 @@
-import { error } from "console";
 import {
   CreateOneMeaningInput,
   CreateOnePronunciationInput,
@@ -24,11 +23,16 @@ export const parseKaikki = (res: FetchKaikkiResponse): ParseKaikkiResponse => {
   res.data.forEach((wordEntry) => {
     // Parse pronunciations
     if (wordEntry.sounds) {
-      wordEntry.sounds.forEach((sound) => {
-        if ("ipa" in sound) {
+      // Exclude homophones, rhymes etc.
+      wordEntry.sounds.forEach((sound, i) => {
+        if ("ipa" in sound || "mp3_url" in sound) {
           pronunciationInputs.push({
             headword: wordEntry.word,
-            transcription: sound.ipa || sound["audio-ipa"],
+            transcription: sound.mp3_url
+              ? sound["audio-ipa"] ||
+                (wordEntry.sounds ? wordEntry.sounds[i - 1].ipa : "")
+              : sound.ipa || "", // If sound.mp3_url, assume that the previous sound.ipa is its IPA
+            audioLink: sound.mp3_url || "", // sound.ogg_url doesn't work
             notes: sound.tags ? sound.tags.join(", ") : "",
           });
         }

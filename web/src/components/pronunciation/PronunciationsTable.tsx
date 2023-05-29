@@ -33,6 +33,7 @@ import {
 import { byToUI, orderToUI } from "../../utils/uiText";
 import { CreatePronunciationsViewer } from "./CreatePronunciationsViewer";
 import { DeletePronunciationBasicButton } from "./DeletePronunciationBasicButton";
+import { EditableAudioLink } from "./EditableAudioLink";
 import { EditableHeadwordPronunciation } from "./EditableHeadwordPronunciation";
 import { EditableNotesPronunciation } from "./EditableNotesPronunciation";
 import { EditableTranscription } from "./EditableTranscription";
@@ -251,6 +252,7 @@ export const PronunciationsTable: React.FC<PronunciationsTableProps> = ({}) => {
                 <Tr>
                   <Th>Headword(s)</Th>
                   <Th>Transcription</Th>
+                  <Th>Audio</Th>
                   <Th>Notes</Th>
                   <Th>Actions</Th>
                 </Tr>
@@ -272,6 +274,12 @@ export const PronunciationsTable: React.FC<PronunciationsTableProps> = ({}) => {
                             <EditableTranscription
                               id={pronunciation.id}
                               transcription={pronunciation.transcription}
+                            />
+                          </Td>
+                          <Td >
+                            <EditableAudioLink
+                              id={pronunciation.id}
+                              audioLink={pronunciation.audioLink}
                             />
                           </Td>
                           <Td style={{ whiteSpace: "pre-wrap" }}>

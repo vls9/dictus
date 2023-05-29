@@ -72,6 +72,7 @@ export type CreateOneMeaningResponse = {
 };
 
 export type CreateOnePronunciationInput = {
+  audioLink?: InputMaybe<Scalars['String']>;
   headword?: InputMaybe<Scalars['String']>;
   notes?: InputMaybe<Scalars['String']>;
   transcription?: InputMaybe<Scalars['String']>;
@@ -238,6 +239,7 @@ export type NoFieldError = {
 
 export type Pronunciation = {
   __typename?: 'Pronunciation';
+  audioLink: Scalars['String'];
   createdAt: Scalars['String'];
   entry: Entry;
   entryId: Scalars['Int'];
@@ -440,6 +442,7 @@ export type UpdatedEntryMeaning = {
 };
 
 export type UpdatedEntryPronunciation = {
+  audioLink?: InputMaybe<Scalars['String']>;
   headword?: InputMaybe<Scalars['String']>;
   notes?: InputMaybe<Scalars['String']>;
   transcription?: InputMaybe<Scalars['String']>;
@@ -460,7 +463,7 @@ export type RegularFieldErrorFragment = { __typename?: 'FieldError', field: stri
 
 export type RegularMeaningFragment = { __typename?: 'Meaning', id: number, definition: string, usage: string, imageLink: string, notes: string, userId: number, createdAt: string, updatedAt: string, entries: Array<{ __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string }> };
 
-export type RegularPronunciationFragment = { __typename?: 'Pronunciation', id: number, transcription: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } };
+export type RegularPronunciationFragment = { __typename?: 'Pronunciation', id: number, transcription: string, audioLink: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } };
 
 export type RegularUserFragment = { __typename?: 'User', id: number, username: string };
 
@@ -483,7 +486,7 @@ export type CreateManyPronunciationsMutationVariables = Exact<{
 }>;
 
 
-export type CreateManyPronunciationsMutation = { __typename?: 'Mutation', createManyPronunciations: { __typename?: 'CreateManyPronunciationsResponse', pronunciations?: Array<{ __typename?: 'Pronunciation', id: number, transcription: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } }> | null, error?: { __typename?: 'FieldError', field: string, message: string } | null } };
+export type CreateManyPronunciationsMutation = { __typename?: 'Mutation', createManyPronunciations: { __typename?: 'CreateManyPronunciationsResponse', pronunciations?: Array<{ __typename?: 'Pronunciation', id: number, transcription: string, audioLink: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } }> | null, error?: { __typename?: 'FieldError', field: string, message: string } | null } };
 
 export type CreateMeaningLinkMutationVariables = Exact<{
   options: CreateMeaningLinkInput;
@@ -504,7 +507,7 @@ export type CreateOnePronunciationMutationVariables = Exact<{
 }>;
 
 
-export type CreateOnePronunciationMutation = { __typename?: 'Mutation', createOnePronunciation: { __typename?: 'CreateOnePronunciationResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null, pronunciation?: { __typename?: 'Pronunciation', id: number, transcription: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } } | null } };
+export type CreateOnePronunciationMutation = { __typename?: 'Mutation', createOnePronunciation: { __typename?: 'CreateOnePronunciationResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null, pronunciation?: { __typename?: 'Pronunciation', id: number, transcription: string, audioLink: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } } | null } };
 
 export type DeleteMeaningMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -585,7 +588,7 @@ export type ReadManyPronunciationsQueryVariables = Exact<{
 }>;
 
 
-export type ReadManyPronunciationsQuery = { __typename?: 'Query', readManyPronunciations: { __typename?: 'ReadManyPronunciationsResponse', pronunciations?: Array<{ __typename?: 'Pronunciation', id: number, transcription: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } }> | null, error?: { __typename?: 'NoFieldError', message: string } | null } };
+export type ReadManyPronunciationsQuery = { __typename?: 'Query', readManyPronunciations: { __typename?: 'ReadManyPronunciationsResponse', pronunciations?: Array<{ __typename?: 'Pronunciation', id: number, transcription: string, audioLink: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } }> | null, error?: { __typename?: 'NoFieldError', message: string } | null } };
 
 export type ReadMeaningIdsForPaginationQueryVariables = Exact<{
   options: ReadMeaningIdsForPaginationInput;
@@ -606,7 +609,7 @@ export type ReadOnePronunciationQueryVariables = Exact<{
 }>;
 
 
-export type ReadOnePronunciationQuery = { __typename?: 'Query', readOnePronunciation: { __typename?: 'ReadOnePronunciationResponse', id?: number | null, pronunciation?: { __typename?: 'Pronunciation', id: number, transcription: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } } | null, error?: { __typename?: 'NoFieldError', message: string } | null } };
+export type ReadOnePronunciationQuery = { __typename?: 'Query', readOnePronunciation: { __typename?: 'ReadOnePronunciationResponse', id?: number | null, pronunciation?: { __typename?: 'Pronunciation', id: number, transcription: string, audioLink: string, notes: string, userId: number, entryId: number, createdAt: string, updatedAt: string, entry: { __typename?: 'Entry', id: number, headword: string, createdAt: string, updatedAt: string } } | null, error?: { __typename?: 'NoFieldError', message: string } | null } };
 
 export type ReadPronunciationIdsForPaginationQueryVariables = Exact<{
   options: ReadPronunciationIdsForPaginationInput;
@@ -669,6 +672,7 @@ export const RegularPronunciationFragmentDoc = gql`
     fragment RegularPronunciation on Pronunciation {
   id
   transcription
+  audioLink
   notes
   userId
   entryId

@@ -1,6 +1,7 @@
 fragment RegularPronunciation on Pronunciation {
   id
   transcription
+  audioLink
   notes
   userId
   entryId

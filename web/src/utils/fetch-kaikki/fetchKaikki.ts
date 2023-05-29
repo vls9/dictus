@@ -27,6 +27,7 @@ export const fetchKaikki = async (
     0,
     1
   )}/${converted.slice(0, Math.min(2, converted.length))}/${converted}.json`;
+  console.log("URL:", url);
   // Fetch response
   try {
     const { data, status } = await axios.get<string | WordEntry>(url, {

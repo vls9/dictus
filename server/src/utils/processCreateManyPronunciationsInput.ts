@@ -9,10 +9,12 @@ import { EntryInput } from "./createOneEntry.js";
 class PronunciationInput {
   transcription!: string;
   notes!: string;
+  audioLink!: string;
 
   constructor(payload: Partial<PronunciationInput>) {
     this.transcription = payload.transcription || "";
     this.notes = payload.notes || "";
+    this.audioLink = payload.audioLink || "";
   }
 }
 
@@ -20,6 +22,8 @@ const pronunciationFieldKeyMap = new Map<string, keyof PronunciationInput>([
   ["-t", "transcription"],
   // ["/", "transcription"],
   // ["[", "transcription"],
+  ["-a", "audioLink"],
+  ["-n", "notes"],
 ]);
 
 type ProcessCreateManyPronunciationsResponse = {

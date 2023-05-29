@@ -23,6 +23,9 @@ class CreateOnePronunciationInput {
   transcription: string = "";
 
   @Field(() => String)
+  audioLink: string = "";
+
+  @Field(() => String)
   notes: string = "";
 }
 
