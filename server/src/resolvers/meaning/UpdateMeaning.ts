@@ -66,10 +66,10 @@ export class UpdateMeaningResolver {
 
     // Check image if it exists
     if (options.updatedMeaning.imageLink) {
-      try {
-        await checkImageLink(options.updatedMeaning.imageLink);
-      } catch (err) {
-        console.error(err);
+      const isImageLink = await checkImageLink(
+        options.updatedMeaning.imageLink
+      );
+      if (!isImageLink) {
         return {
           errors: [
             {
